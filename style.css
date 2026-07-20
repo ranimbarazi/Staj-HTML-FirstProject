@@ -1,0 +1,30 @@
+body{
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 30px;
+}
+
+#baslik{
+    color: darkblue;
+    text-align: center;
+}
+
+.yazi{
+    color: green;
+    font-size: 18px;
+}
+
+.kutu{
+    background-color: white;
+    border: 2px solid black;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+button{
+    background-color: blue;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
