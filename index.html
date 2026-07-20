@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Planner</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="planner">
+
+<div class="rings">
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+</div>
+
+<h1>Daily Planner</h1>
+<input type="date" id="deadline">
+<div class="dateBox">
+
+<div>
+<label>Day</label>
+<p id="day"></p>
+</div>
+
+<div>
+<label>Month</label>
+<p id="month"></p>
+</div>
+
+<div>
+<label>Year</label>
+<p id="year"></p>
+</div>
+
+</div>
+
+<hr>
+
+<h2>Hourly Schedule</h2>
+
+<div id="schedule"></div>
+
+<hr>
+
+<div class="bottom">
+<h2>Today's Priorities</h2>
+
+<div class="addPriority">
+<input type="text" id="priorityInput" placeholder="New Priority">
+<button id="addPriorityBtn">+</button>
+</div>
+
+<div id="priorityList"></div>
+
+</div>
+
+<!-- To Do List -->
+
+<div class="todo">
+
+<h2>To-Do List</h2>
+
+<div class="addTask">
+<input type="text" id="taskInput" placeholder="Add New Task">
+<button id="addTaskBtn">+</button>
+</div>
+
+<div id="taskList"></div>
+
+</div>
+
+</div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

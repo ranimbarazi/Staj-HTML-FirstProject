@@ -1,0 +1,207 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#e8e3d8;
+display:flex;
+justify-content:center;
+padding:40px 20px;
+}
+
+.planner{
+width:950px;
+background:#fffdf8;
+border-radius:20px;
+padding:35px 50px;
+box-shadow:0 15px 35px rgba(0,0,0,.15);
+position:relative;
+}
+
+.rings{
+display:flex;
+justify-content:center;
+gap:25px;
+margin-bottom:20px;
+}
+
+.rings span{
+width:22px;
+height:22px;
+border:5px solid #555;
+border-radius:50%;
+background:#fff;
+}
+
+h1{
+text-align:center;
+font-size:55px;
+margin-bottom:30px;
+font-family:Georgia,serif;
+color:#333;
+}
+
+.dateBox{
+display:flex;
+justify-content:center;
+gap:80px;
+margin-bottom:25px;
+}
+
+.dateBox div{
+text-align:center;
+}
+
+.dateBox label{
+display:block;
+font-weight:bold;
+margin-bottom:5px;
+}
+
+.dateBox p{
+font-size:22px;
+color:#b45309;
+}
+
+hr{
+margin:30px 0;
+border:none;
+border-top:2px dashed #bbb;
+}
+
+h2{
+margin-bottom:15px;
+color:#444;
+}
+
+#schedule{
+display:flex;
+flex-direction:column;
+gap:12px;
+}
+
+.scheduleRow{
+display:flex;
+align-items:center;
+gap:15px;
+}
+
+.time{
+width:70px;
+font-weight:bold;
+}
+
+.scheduleInput{
+flex:1;
+padding:10px;
+border:none;
+border-bottom:2px solid #777;
+background:transparent;
+font-size:16px;
+outline:none;
+}
+
+.bottom{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+margin-top:30px;
+}
+
+.addTask,
+.addPriority{
+display:flex;
+gap:10px;
+margin-bottom:20px;
+}
+
+.addTask input,
+.addPriority input{
+flex:1;
+padding:12px;
+border:1px solid #ccc;
+border-radius:8px;
+font-size:15px;
+}
+
+.addTask button,
+.addPriority button{
+width:45px;
+border:none;
+background:#8b7355;
+color:white;
+font-size:22px;
+border-radius:8px;
+cursor:pointer;
+}
+
+.addTask button:hover,
+.addPriority button:hover{
+background:#6f5d46;
+}
+
+.task,
+.priorityItem{
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:#f8f4ec;
+padding:12px;
+border-radius:10px;
+margin-bottom:10px;
+}
+
+.task span,
+.priorityItem span{
+flex:1;
+}
+
+.done{
+text-decoration:line-through;
+color:#888;
+}
+
+.actions{
+display:flex;
+gap:8px;
+}
+
+.actions button{
+padding:6px 10px;
+border:none;
+border-radius:6px;
+cursor:pointer;
+color:white;
+}
+
+.completeBtn{
+background:#22c55e;
+}
+
+.deleteBtn{
+background:#ef4444;
+}
+
+@media(max-width:900px){
+
+.planner{
+width:100%;
+padding:25px;
+}
+
+.bottom{
+grid-template-columns:1fr;
+}
+
+.dateBox{
+gap:25px;
+}
+
+h1{
+font-size:38px;
+}
+
+}
