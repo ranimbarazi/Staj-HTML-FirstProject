@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>7. Gün DOM Çalışması</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h1 id="baslik">JavaScript DOM</h1>
+
+<input type="text" id="isim" placeholder="Adınızı giriniz">
+
+<br><br>
+
+<button onclick="degistir()">Göster</button>
+
+<p id="mesaj"></p>
+
+<script>
+
+function degistir(){
+
+    let isim = document.getElementById("isim").value;
+
+    if(isim==""){
+
+        alert("Lütfen adınızı giriniz!");
+
+    }
+
+    else{
+
+        document.getElementById("mesaj").innerHTML =
+        "Hoş geldin " + isim;
+
+        document.getElementById("baslik").style.color = "blue";
+
+        document.getElementById("mesaj").style.fontSize = "25px";
+
+    }
+
+}
+
+</script>
+
+</body>
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>7. Gün DOM Çalışması</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1 id="baslik">Öğrenci Bilgi Formu</h1>
+
+    <label>Adınız:</label><br>
+    <input type="text" id="ad"><br><br>
+
+    <label>Soyadınız:</label><br>
+    <input type="text" id="soyad"><br><br>
+
+    <label>Yaşınız:</label><br>
+    <input type="number" id="yas"><br><br>
+
+    <label>Bölümünüz:</label><br>
+    <select id="bolum">
+        <option>Bilgisayar Mühendisliği</option>
+        <option>Yazılım Mühendisliği</option>
+        <option>Elektrik Elektronik Mühendisliği</option>
+    </select>
+
+    <br><br>
+
+    <button onclick="bilgiGoster()">Bilgileri Göster</button>
+
+    <hr>
+
+    <div id="kart">
+        <h2>Öğrenci Bilgileri</h2>
+
+        <p id="isim"></p>
+        <p id="yasBilgi"></p>
+        <p id="bolumBilgi"></p>
+        <p id="tarih"></p>
+    </div>
+
+<script>
+
+function bilgiGoster(){
+
+    let ad = document.getElementById("ad").value;
+    let soyad = document.getElementById("soyad").value;
+    let yas = document.getElementById("yas").value;
+    let bolum = document.getElementById("bolum").value;
+
+    if(ad=="" || soyad=="" || yas==""){
+
+        alert("Lütfen tüm alanları doldurunuz!");
+        return;
+    }
+
+    document.getElementById("isim").innerHTML =
+    "Ad Soyad: " + ad + " " + soyad;
+
+    document.getElementById("yasBilgi").innerHTML =
+    "Yaş: " + yas;
+
+    document.getElementById("bolumBilgi").innerHTML =
+    "Bölüm: " + bolum;
+
+    let bugun = new Date();
+
+    document.getElementById("tarih").innerHTML =
+    "Tarih: " + bugun.toLocaleDateString();
+
+    document.getElementById("baslik").style.color = "darkblue";
+
+    document.getElementById("kart").style.backgroundColor = "#dff6ff";
+
+    document.getElementById("kart").style.border = "2px solid blue";
+
+    document.getElementById("kart").style.padding = "20px";
+
+}
+
+</script>
+
+</body>
+</html>
