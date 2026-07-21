@@ -1,150 +1,173 @@
-const today = new Date();
+// Date
+
+const dateInput = document.getElementById("selectedDate");
+const day = document.getElementById("day");
+const month = document.getElementById("month");
+const year = document.getElementById("year");
 
 const months = [
 "January","February","March","April","May","June",
 "July","August","September","October","November","December"
 ];
 
-document.getElementById("day").textContent = today.getDate();
-document.getElementById("month").textContent = months[today.getMonth()];
-document.getElementById("year").textContent = today.getFullYear();
+function updateDate(date){
+day.textContent = date.getDate();
+month.textContent = months[date.getMonth()];
+year.textContent = date.getFullYear();
+}
+
+const today = new Date();
+dateInput.value = today.toISOString().split("T")[0];
+updateDate(today);
+
+dateInput.addEventListener("change",function(){
+updateDate(new Date(this.value));
+});
+
+// Hourly Schedule
 
 const schedule = document.getElementById("schedule");
 
-let notes = JSON.parse(localStorage.getItem("notes")) || {};
+for(let hour=9;hour<=21;hour++){
 
-for(let hour = 8; hour <= 20; hour++){
+const row=document.createElement("div");
+row.className="row";
 
-    let row = document.createElement("div");
-    row.className = "scheduleRow";
+const time=document.createElement("div");
+time.className="time";
+time.textContent=(hour<10?"0":"")+hour+":00";
 
-    let time = document.createElement("div");
-    time.className = "time";
-    time.textContent = (hour < 10 ? "0" : "") + hour + ":00";
+const line=document.createElement("input");
+line.type="text";
+line.className="line";
+line.placeholder="Write here...";
 
-    let input = document.createElement("input");
-    input.className = "scheduleInput";
-    input.placeholder = "Write here...";
+row.appendChild(time);
+row.appendChild(line);
 
-    if(notes[hour]){
-        input.value = notes[hour];
-    }
+schedule.appendChild(row);
+// To Do List
 
-    input.addEventListener("input",function(){
-
-        notes[hour] = input.value;
-
-        localStorage.setItem(
-            "notes",
-            JSON.stringify(notes)
-        );
-
-    });
-
-    row.appendChild(time);
-    row.appendChild(input);
-
-    schedule.appendChild(row);
-
-}
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
 const taskInput = document.getElementById("taskInput");
 const addTaskBtn = document.getElementById("addTaskBtn");
 const taskList = document.getElementById("taskList");
 
+function saveTasks(){
+localStorage.setItem("tasks",JSON.stringify(tasks));
+}
 
-addTaskBtn.addEventListener("click",addTask);
+function showTasks(){
 
-taskInput.addEventListener("keypress",function(e){
+taskList.innerHTML="";
 
-    if(e.key==="Enter"){
-        addTask();
-    }
+tasks.forEach((task,index)=>{
+
+const div=document.createElement("div");
+div.className="task";
+
+if(task.done){
+div.classList.add("completed");
+}
+
+div.innerHTML=`
+<span>${task.title}</span>
+<div>
+<button class="done">Done</button>
+<button class="delete">Delete</button>
+</div>
+`;
+
+div.querySelector(".done").onclick=function(){
+tasks[index].done=!tasks[index].done;
+saveTasks();
+showTasks();
+};
+
+div.querySelector(".delete").onclick=function(){
+tasks.splice(index,1);
+saveTasks();
+showTasks();
+};
+
+taskList.appendChild(div);
+
 });
 
-function addTask(){
-
-    if(taskInput.value.trim()===""){
-        alert("Please enter a task.");
-        return;
-    }
-
-    tasks.push({
-
-        title:taskInput.value,
-        done:false
-
-    });
-
-    taskInput.value="";
-
-    saveTasks();
-
-    displayTasks();
 }
 
-function displayTasks(){
+addTaskBtn.onclick=function(){
 
-    taskList.innerHTML="";
+if(taskInput.value.trim()=="") return;
 
-    tasks.forEach(function(task,index){
+tasks.push({
+title:taskInput.value,
+done:false
+});
 
-        let div=document.createElement("div");
-        div.className="task";
+taskInput.value="";
+saveTasks();
+showTasks();
 
-        if(task.done){
-            div.classList.add("done");
-        }
+};
 
-        div.innerHTML=`
+showTasks();
+// Today's Priorities
 
-        <span>${task.title}</span>
+let priorities = JSON.parse(localStorage.getItem("priorities")) || [];
 
-        <div class="actions">
+const priorityInput = document.getElementById("priorityInput");
+const addPriorityBtn = document.getElementById("addPriorityBtn");
+const priorityList = document.getElementById("priorityList");
 
-        <button class="completeBtn">✔</button>
-
-        <button class="deleteBtn">🗑</button>
-
-        </div>
-
-        `;
-
-        div.querySelector(".completeBtn").onclick=function(){
-
-            tasks[index].done=!tasks[index].done;
-
-            saveTasks();
-
-            displayTasks();
-
-        };
-
-        div.querySelector(".deleteBtn").onclick=function(){
-
-            tasks.splice(index,1);
-
-            saveTasks();
-
-            displayTasks();
-
-        };
-
-        taskList.appendChild(div);
-
-    });
+function savePriorities(){
+localStorage.setItem("priorities", JSON.stringify(priorities));
 }
 
-function saveTasks(){
+function showPriorities(){
 
-    localStorage.setItem(
+priorityList.innerHTML = "";
 
-        "tasks",
+priorities.forEach((item,index)=>{
 
-        JSON.stringify(tasks)
+const div = document.createElement("div");
+div.className = "priorityItem";
 
-    );
+div.innerHTML = `
+<span>${item}</span>
+<button class="delete">Delete</button>
+`;
+
+div.querySelector(".delete").onclick = function(){
+
+priorities.splice(index,1);
+
+savePriorities();
+
+showPriorities();
+
+};
+
+priorityList.appendChild(div);
+
+});
 
 }
-displayTasks();
+
+addPriorityBtn.onclick = function(){
+
+if(priorityInput.value.trim()=="") return;
+
+priorities.push(priorityInput.value);
+
+priorityInput.value="";
+
+savePriorities();
+
+showPriorities();
+
+};
+
+showPriorities();
+}
