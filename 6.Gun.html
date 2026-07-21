@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>6. Gün JavaScript Çalışması</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>6. Gün JavaScript Çalışması</h1>
+
+    <button onclick="mesajGoster()">Function</button>
+    <button onclick="forOrnegi()">For Döngüsü</button>
+    <button onclick="whileOrnegi()">While Döngüsü</button>
+    <button onclick="arrayOrnegi()">Array</button>
+    <button onclick="objectOrnegi()">Object</button>
+
+    <h2>Sonuç:</h2>
+    <p id="sonuc"></p>
+
+    <script>
+
+        // Function
+        function mesajGoster() {
+            document.getElementById("sonuc").innerHTML =
+                "Merhaba! Bu bir JavaScript fonksiyonudur.";
+        }
+
+        // For Döngüsü
+        function forOrnegi() {
+
+            let metin = "";
+
+            for (let i = 1; i <= 5; i++) {
+                metin += i + " ";
+            }
+
+            document.getElementById("sonuc").innerHTML =
+                "For Döngüsü: " + metin;
+        }
+
+        // While Döngüsü
+        function whileOrnegi() {
+
+            let i = 1;
+            let metin = "";
+
+            while (i <= 5) {
+                metin += i + " ";
+                i++;
+            }
+
+            document.getElementById("sonuc").innerHTML =
+                "While Döngüsü: " + metin;
+        }
+
+        // Array
+        function arrayOrnegi() {
+
+            let dersler = [
+                "HTML",
+                "CSS",
+                "JavaScript"
+            ];
+
+            document.getElementById("sonuc").innerHTML =
+                "Array: " + dersler.join(" - ");
+        }
+
+        // Object
+       function objectOrnegi() {
+
+    let araba = {
+
+        marka: "Toyota",
+        model: "Corolla",
+        renk: "Beyaz"
+
+    };
+
+    document.getElementById("sonuc").innerHTML =
+        "Marka: " + araba.marka +
+        "<br>Model: " + araba.model +
+        "<br>Renk: " + araba.renk;
+}
+
+    </script>
+
+</body>
+
+</html>

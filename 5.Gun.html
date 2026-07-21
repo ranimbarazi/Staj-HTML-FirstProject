@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>5. Gün JavaScript Çalışması</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>JavaScript Çalışması</h1>
+
+    <p id="mesaj">Merhaba!</p>
+
+    <input type="text" id="isim" placeholder="Adınızı giriniz">
+
+    <br><br>
+
+    <button onclick="mesajGoster()">Göster</button>
+
+    <script>
+
+        function mesajGoster() {
+
+            let ad = document.getElementById("isim").value;
+
+            document.getElementById("mesaj").innerHTML =
+                "Merhaba " + ad + "!";
+
+        }
+
+    </script>
+
+</body>
+
+</html>
